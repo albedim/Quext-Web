@@ -1,4 +1,5 @@
 {
+  "homepage": "http://albedim.github.io/Queext-web/",
   "name": "quext-web",
   "version": "0.1.0",
   "private": true,
@@ -8,16 +9,22 @@
     "@testing-library/user-event": "^13.5.0",
     "aaxios": "^0.18.1",
     "axios": "^1.2.5",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-ion-icon": "^4.0.0",
+    "react-ionicons": "^4.2.0",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "react-webcam": "^7.0.1",
     "spinners-react": "^1.0.7",
+    "tesseract.js": "^4.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -i build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
