@@ -8,7 +8,7 @@ import { Account } from './components/Account';
 
 function App() {
   return (
-    <BrowserRouter basename='/Quext-Web'>
+    <BrowserRouter>
       <Routes>
         <Route 
           path='/home' 
