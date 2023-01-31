@@ -20391,3 +20391,5 @@
 .align-center{align-items: center;}
 
 .hover:hover{ cursor: pointer; }
+
+.opacity{ background-color:rgba(0,0,0,.5) }

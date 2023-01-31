@@ -18,10 +18,10 @@ export const Menu = () => {
   })
 
   return(
-    <div className='border-smaller height-130'>
+    <div className='height-130'>
       <div className="display-flex space-between purple-background width-full height-60">
-        <div className='width-140 display-flex space-around align-center'><div className='hover font-size-24 white-color' onClick={(e) => navigate("/about")}><IonIcon name='information-circle'/></div></div>
-        <div className='width-140 display-flex space-around align-center'><div className='hover font-size-24 white-color' onClick={(e) => navigate("/account")}><IonIcon name='person'/></div></div>
+        <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 white-color' onClick={(e) => navigate("/about")}><IonIcon name='information-circle'/></div></div>
+        <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 white-color' onClick={(e) => navigate("/account")}><IonIcon name='person'/></div></div>
       </div>
       <div className='display-flex space-around align-center red-background height-30'>
         <span className='red-color font-family font-weight-400'>Not working on iPhone? We are fixing that!</span>

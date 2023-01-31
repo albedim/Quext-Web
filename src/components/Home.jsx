@@ -21,13 +21,12 @@ export default function Home(){
 
     const [summary, setSummary] = useState(null) // Contains the recognized user
 
-    /*
     const sendData = async (image) => {
       setSummary(null)
       setIsLoading(true);
       await axios.post('http://192.168.1.10:5000/api/v_1_1_5/summary/image/get', {
           'encodedImage': image.toString().substring(23),
-          'language': window.localStorage.getItem('language'),
+          'language': window.localStorage.getItem('language').substring(0,window.localStorage.getItem('language').length - 1),
           'API_KEY': 'PCYBL4TYfnVXeDhFZYvT'
       })
       .then(response => {
@@ -41,7 +40,6 @@ export default function Home(){
         console.log(error) 
       })
     }
-    */
 
     const sendTextData = async (text) => {
       setSummary(null);
@@ -109,7 +107,7 @@ export default function Home(){
   
     return (
       <div className="overflow-y-scroll display-flex space-around width-full height-848">
-        <div className="overflow-y-scroll mobile-container align-center display-flex space-around height-auto width-1200">
+        <div className="overflow-y-scroll mobile-container align-center display-flex space-around height-748 width-1200">
           <div className="width-500 display-flex space-around align-center upload">
 
             <div className="upload-field">

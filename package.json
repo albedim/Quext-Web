@@ -17,6 +17,7 @@
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "react-spring": "^9.6.1",
+    "react-translate": "^7.0.1",
     "react-webcam": "^7.0.1",
     "spinners-react": "^1.0.7",
     "tesseract.js": "^4.0.2",

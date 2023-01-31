@@ -26,7 +26,7 @@ export const Language = () => {
   const changePage = () => {
     if(language != null){
       window.localStorage.setItem('language', language);
-      navigate("/home");
+      navigate("/about");
     }
   }
 
