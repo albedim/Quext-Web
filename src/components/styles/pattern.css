@@ -20389,3 +20389,5 @@
 .position-absolute{ position: absolute; }
 
 .align-center{align-items: center;}
+
+.hover:hover{ cursor: pointer; }

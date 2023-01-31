@@ -16,9 +16,11 @@
     "react-ionicons": "^4.2.0",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
+    "react-spring": "^9.6.1",
     "react-webcam": "^7.0.1",
     "spinners-react": "^1.0.7",
     "tesseract.js": "^4.0.2",
+    "use-boop": "^1.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

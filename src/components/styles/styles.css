@@ -40,7 +40,6 @@ body main a {
 .upload {
   width: 520px;
   height: 400px;
-  margin: 0 auto;
   position: relative;
   z-index: 2;
   background-color: transparent;
@@ -51,7 +50,7 @@ body main a {
 .upload .upload-field {
   width: 75%;
   height: 100%;
-  background-image: linear-gradient(15deg, #8e44ad, #9b59b6);
+  background-image: linear-gradient(15deg, #bc7bd6, #ac6fc4);
   border-radius: 5px;
   position: absolute;
   z-index: 4;
@@ -91,12 +90,8 @@ body main a {
   font-weight: 500;
 }
 .upload .upload-status {
-  position: absolute;
   display: block;
   z-index: 5;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
   width: 60%;
   height: 80%;
   background-color: #fff;
@@ -140,7 +135,6 @@ body main a {
   height: 5px;
   width: 100%;
   border-radius: 2.5px;
-  position: relative;
   overflow: hidden;
 }
 .status-line {
@@ -207,21 +201,17 @@ body main a {
 
 @media screen and (max-width: 1080px){
   .mobile-container{
-    height: 700px !important;
+    flex-direction: column;
+    height: 1000px !important;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 1000px;
-    display: block !important;
+    display: flex !important;
   }
   .mobile-summary{
     width: 340px !important;
-    margin-left: 34px;
   }
   .upload-field{
     display: none !important;
-  }
-  .upload-status{
-    margin-right: 155px;
   }
   .summary{
     width: 284px !important;
@@ -243,3 +233,21 @@ body main a {
 .gray-background{
   background-color: #efd7f8;
 }
+
+.yellow-background{
+  background-color: #fceca9;
+}
+
+.yellow-color{
+  color: #e6c84e;
+}
+
+.red-color{
+  color: #f75a5a;
+}
+
+.red-background{
+  background-color: #ffa3a3;
+}
+
+a{text-decoration: none;}
