@@ -13,13 +13,22 @@ export default function Home(){
 
     const webcamRef = useRef(null);
 
+    const [isSpeaking, setIsSpeaking] = useState(false);
+
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate()
 
+    const synth = window.speechSynthesis
+
     const [file, setFile] = useState(null)
 
     const [summary, setSummary] = useState(null) // Contains the recognized user
+
+    const [text, setText] = useState("");
+
+    const summaryToSpeak = new SpeechSynthesisUtterance(summary);
+    
 
     const sendData = async (image) => {
       setSummary(null)
@@ -56,6 +65,7 @@ export default function Home(){
           setSummary(response.data.param);
         }
         setFile(null);
+        setText("");
       })
       .catch(error => {
         console.log(error) 
@@ -90,10 +100,15 @@ export default function Home(){
     }
 
     const speak = () => {
-      const msg = new SpeechSynthesisUtterance()
-      msg.text = summary
-      window.speechSynthesis.speak(msg)
+      setIsSpeaking(true);
+      synth.speak(summaryToSpeak);
     }
+
+    const stop = () => {
+      setIsSpeaking(false);
+      synth.cancel();
+    }
+
 
     const toText = async (image) => {
       await Tesseract.recognize(image, window.localStorage.getItem('language'), { 
@@ -104,24 +119,39 @@ export default function Home(){
         sendTextData(text)
       })
     }
+
+    const handleText = (e) => {
+      setText(e.target.value);
+    }
+
+    const changeUploadMode = () => {
+      if(document.querySelector("#uploadImage").style.display == "block"){
+        document.querySelector("#uploadImage").style.display = "none";
+        document.querySelector("#uploadText").style.display = "block";
+      }else{
+        document.querySelector("#uploadImage").style.display = "block";
+        document.querySelector("#uploadText").style.display = "none";
+      }
+    }
   
     return (
       <div className="overflow-y-scroll display-flex space-around width-full height-full">
         <div className="overflow-y-scroll mobile-container align-center display-flex space-around height-748 width-1200">
           <div className="width-500 display-flex space-around align-center upload">
 
-            <div className="upload-field">
-              <div className="icon-field"><span className="fa fa-file-o"></span>
-                <p>Drag your files here</p>
-              </div>
+            <div className="z-index-3 white-background upload-field">
+          
             </div>
-            
-            <div className="border-radius-10 upload-status">
-              <div className="margin-left-34 width-240 margin-top-24"><h1>SCAN</h1></div>
-              <div className="margin-left-34 width-240 height-80 height-124 margin-top-40">
+
+            <div id="uploadImage" className="display-block z-index-4 border-radius-10 upload-status">
+              <div className="display-flex space-between align-center height-80 margin-left-34 width-240 margin-top-24">
+                <span className="width-70 font-weight-600 display-flex space-around align-center font-family font-size-24">SCAN</span>
+                <div onClick={(e) => changeUploadMode(e)} className="hover purple-color width-30 font-size-18"><IonIcon name="text"/></div>
+              </div>
+              <div className="margin-top-24 display-flex space-around margin-left-34 width-240 height-124">
               {
                 file != null ? (
-                  <div className="file">
+                  <div className="margin-top-14 file">
                     <div className="file-description">
                       <div className="file-name">{file.name.substring(0,14) + '...'}</div>
                       <div className="file-size">{(file.size / 1000000).toString().substring(0,3)}MB</div>
@@ -133,7 +163,7 @@ export default function Home(){
                     </div>
                   </div>
                 ):(
-                  <span>No files found</span>
+                  <span>Nessuna foto trovata</span>
                 )
               }
               </div>
@@ -151,11 +181,31 @@ export default function Home(){
                 )}
               </div>
             </div>
+            <div id="uploadText" className="display-none z-index-4 border-radius-10 upload-status">
+              <div className="display-flex space-between align-center height-80 margin-left-34 width-240 margin-top-24">
+                <span className="width-70 font-weight-600 display-flex space-around align-center font-family font-size-24">SCRIVI</span>
+                <div onClick={(e) => changeUploadMode(e)} className="hover purple-color width-30 font-size-18"><IonIcon name="camera"/></div>
+              </div>
+              <div className="margin-top-24 height-70 margin-left-34 width-240 space-around">
+                <input value={text} onChange={(e) => handleText(e)} placeholder="Scrivi qui il tuo testo" className="border-none outline-none width-220" type="text" />
+              </div>
+              <div className="margin-left-34 width-240 height-60 display-flex space-around align-center">
+                { isLoading ? (
+                  <div onClick={(e) => e.preventDefault()} className="gray-background border-radius-10 height-40 width-140">
+                    <span className="white-color font-family font-weight-500 position-absolute margin-top-10 margin-left-50">VAI</span>
+                  </div>
+                ):(
+                  <div onClick={(e) => sendTextData(text)} className="hover purple-background border-radius-10 height-40 width-140">
+                    <span className="white-color font-family font-weight-500 position-absolute margin-top-10 margin-left-60">VAI</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
           <div className="mobile-summary display-flex space-around align-center height-560 width-540">
             <div className="white-background summary-box border-radius-10 height-484 width-430">
               <div className="display-flex space-around align-center height-60">
-                <span className="font-family font-weight-600 font-size-18">SUMMARY</span>
+                <span className="font-family font-weight-600 font-size-18">RIASSUNTO</span>
               </div>
               <div className="display-flex space-around align-center height-348">
                 <div className="summary overflow-y-scroll height-314 width-314">
@@ -165,20 +215,21 @@ export default function Home(){
                     <div className='height-140 display-flex align-center space-around'>
                       <div className='width-180 display-flex align-center'>
                         <div><img className='width-80' src="./coffe.png" alt="" /></div>
-                        <div className='margin-left-14'><h2 className='font-family font-weight-400 font-size-16'>Nothing found here</h2></div>
+                        <div className='margin-left-14'><h2 className='font-family font-weight-400 font-size-16'>Non c'è nulla qui</h2></div>
                       </div>
                     </div>
                   )}
                 </div>
               </div>
-              {summary != null ? (
-                <div onClick={(e) => speak(e)} className="display-flex space-around align-center height-74">
-                  <div className="hover purple-color font-size-24"><IonIcon name="mic"/></div>
+              {summary != null && !isSpeaking ? (
+                <div className="display-flex space-around align-center height-74">
+                  <div onClick={(e) => speak(e)} className="hover purple-color font-size-24"><IonIcon name="play"/></div>
                 </div>
               ):(
-                <div className="display-flex space-around align-center height-74">
-                  <div className="gray-color font-size-24"><IonIcon name="mic"/></div>
-                </div>
+                isSpeaking && 
+                  <div className="display-flex space-around align-center height-74">
+                    <div onClick={(e) => stop(e)} className="hover red-color font-size-24"><IonIcon name="stop"/></div>
+                  </div>
               )}
             </div>
           </div>

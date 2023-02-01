@@ -18,17 +18,15 @@ export const Menu = () => {
   })
 
   return(
-    <div className='height-130'>
-      <div className="display-flex space-between purple-background width-full height-60">
-        <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 white-color' onClick={(e) => navigate("/about")}><IonIcon name='information-circle'/></div></div>
-        <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 white-color' onClick={(e) => navigate("/account")}><IonIcon name='person'/></div></div>
-      </div>
-      <div className='display-flex space-around align-center red-background height-30'>
-        <span className='red-color font-family font-weight-400'>Not working on iPhone? We are fixing that!</span>
+    <div className='height-100'>
+      <div className="display-flex space-between purple-opacity width-full height-60">
+        <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 purple-color' onClick={(e) => navigate("/about")}><IonIcon name='information-circle'/></div></div>
+        <div className='display-flex space-around align-center width-140'><img className='width-60' src="icon.png" alt="" /></div>
+        <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 purple-color' onClick={(e) => navigate("/account")}><IonIcon name='person'/></div></div>
       </div>
       <a href="https://www.paypal.com/paypalme/albedim">
         <div className='hover display-flex space-around align-center yellow-background height-40'>
-          <span className='yellow-color font-family font-weight-400'>Donate to support this project!</span>
+          <span className='yellow-color font-family font-weight-400'>Supportaci per migliorare questo progetto!</span>
         </div>
       </a>
     </div>

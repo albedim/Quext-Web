@@ -15,23 +15,18 @@ body{
   width: 520px;
   height: 400px;
   position: relative;
-  z-index: 2;
   background-color: transparent;
 }
 .upload h1, .upload p {
   margin: 0;
 }
 .upload .upload-field {
-  width: 75%;
-  height: 100%;
+  width: 380px;
+  height: 404px;
   background-image: linear-gradient(15deg, #bc7bd6, #ac6fc4);
   border-radius: 5px;
   position: absolute;
-  z-index: 4;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #a66bbe;
   box-shadow: 0px 10px 40px #8e44ad;
   pointer-events: hover;
@@ -64,10 +59,8 @@ body{
   font-weight: 500;
 }
 .upload .upload-status {
-  display: block;
-  z-index: 5;
-  width: 60%;
-  height: 80%;
+  width: 304px;
+  height: 345px;
   background-color: #fff;
   box-shadow: 0px 10px 75px rgba(0, 0, 0, 0.5);
 }
@@ -223,6 +216,10 @@ body{
 
 .red-background{
   background-color: #ffa3a3;
+}
+
+.purple-opacity{
+  background-color: #f4e9fa;
 }
 
 a{text-decoration: none;}
