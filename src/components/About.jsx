@@ -16,8 +16,8 @@ export const About = () => {
             <span className="font-family purple-color font-weight-600 font-size-24">Attenzione</span>
           </div>
           <div className="height-180 width-280">
-            <span className="font-family font-size-15">Se stai usando un dispositivo IOS, ti invitiamo a scattare le foto con il telefono in posizione orizzontale per evitare problemi. Questo servizio è in </span><span className="purple-color">BETA</span><span> Ciò significa che abbiamo bisogno dei vostri feedback per poter migliorare l'applicazione.</span>
-            <a href="mailto:dimaio.albe@gmail.com"><span> Mandacene uno qui</span></a>
+            <span className="font-family font-size-15">Se stai usando un dispositivo</span><span className="font-weight-500 purple-color"> IOS</span><span>, ti invitiamo a scattare le foto con il telefono in posizione orizzontale per evitare problemi. Questo servizio è in </span><span className="font-weight-500 purple-color">BETA</span><span> Ciò significa che abbiamo bisogno dei vostri feedback per poter migliorare l'applicazione!</span>
+            <a href="mailto:dimaio.albe@gmail.com"><span className="purple-color"> Mandacene uno qui</span></a>
           </div>
         </div>
       </div>
