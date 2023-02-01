@@ -106,7 +106,7 @@ export default function Home(){
     }
   
     return (
-      <div className="overflow-y-scroll display-flex space-around width-full height-848">
+      <div className="overflow-y-scroll display-flex space-around width-full height-full">
         <div className="overflow-y-scroll mobile-container align-center display-flex space-around height-748 width-1200">
           <div className="width-500 display-flex space-around align-center upload">
 
