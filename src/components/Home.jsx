@@ -8,6 +8,7 @@ import './styles/styles.css';
 import './styles/pattern.css';
 import { IonIcon } from "react-ion-icon";
 import Tesseract from "tesseract.js";
+import { TextareaAutosize } from "@mui/material";
 
 export default function Home(){
 
@@ -186,8 +187,16 @@ export default function Home(){
                 <span className="width-70 font-weight-600 display-flex space-around align-center font-family font-size-24">SCRIVI</span>
                 <div onClick={(e) => changeUploadMode(e)} className="hover purple-color width-30 font-size-18"><IonIcon name="camera"/></div>
               </div>
-              <div className="margin-top-24 height-70 margin-left-34 width-240 space-around">
-                <input value={text} onChange={(e) => handleText(e)} placeholder="Scrivi qui il tuo testo" className="border-none outline-none width-220" type="text" />
+              <div className="display-flex space-around margin-top-24 height-90 margin-left-34 width-240 space-around">
+                <TextareaAutosize
+                  aria-label="minimum height"
+                  maxRows={3}
+                  placeholder="Scrivi il tuo testo qui"
+                  style={{ width: 200 }}
+                  value={text}
+                  className="border-radius-5 outline-none padding-10"
+                  onChange={(e) => handleText(e)}
+                />
               </div>
               <div className="margin-left-34 width-240 height-60 display-flex space-around align-center">
                 { isLoading ? (
