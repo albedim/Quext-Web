@@ -6,7 +6,7 @@ export const Language = () => {
 
   const [languages, setLanguages] = useState({})
 
-  const [language, setLanguage] = useState(null);
+  const [language, setLanguage] = useState("choose");
 
   const navigate = useNavigate();
 
@@ -24,17 +24,15 @@ export const Language = () => {
   },[])
 
   const changePage = () => {
-    if(language != null){
-      window.localStorage.setItem('language', language);
-      navigate("/about");
-    }
+    window.localStorage.setItem('language', language);
+    navigate("/about");
   }
 
   return(
     <div className="width-full height-800 display-flex space-around align-center">
       <div className="height-210 width-240">
         <div className="display-flex space-around align-center height-110">
-          <select onChange={(e) => setLanguage(e.target.value)} className="width-140 height-40 border-radius-5 border-none" name="" id="">
+          <select value={language} onChange={(e) => setLanguage(e.target.value)} className="width-140 height-40 border-radius-5 border-none" name="" id="">
             {
               Object.keys(languages).map((key, i) => (
                 <option className="width-140 height-40 border-radius-5 border-none" value={languages[key]}>{key}</option>
