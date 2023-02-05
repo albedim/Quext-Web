@@ -52,7 +52,7 @@ export const SignIn = () => {
 
   return(
     <div className='page-background width-full height-1000 display-flex space-around align-center'>
-    <div className='white-background height-410 white-backgroundcolor width-350'>
+    <div className='border-radius-10 white-background height-410 white-backgroundcolor width-350'>
       <div className='display-flex height-90 space-around align-center'><h2 className='font-weight-700 font-family'>SIGN IN</h2></div>
       <div className='display-flex space-around height-150'>
         <form action="post">

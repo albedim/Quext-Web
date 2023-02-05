@@ -17,7 +17,7 @@ export const About = () => {
           </div>
           <div className="height-180 width-280">
             <span className="font-family font-size-15">Se stai usando un dispositivo</span><span className="font-weight-500 purple-color"> IOS</span><span>, ti invitiamo a scattare le foto con il telefono in posizione orizzontale per evitare problemi. Questo servizio è in </span><span className="font-weight-500 purple-color">BETA</span><span> Ciò significa che abbiamo bisogno dei vostri feedback per poter migliorare l'applicazione!</span>
-            <a href="mailto:dimaio.albe@gmail.com"><span className="purple-color"> Mandacene uno qui</span></a>
+            <a href="mailto:quext.team@gmail.com"><span className="purple-color"> Mandacene uno qui</span></a>
           </div>
         </div>
       </div>

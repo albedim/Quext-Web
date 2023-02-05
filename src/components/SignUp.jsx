@@ -3,7 +3,7 @@ import './styles/styles.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {IonIcon} from "react-ion-icon";
-import { API, formValider } from '../utils.ts';
+import { emailValider, API, formValider } from '../utils.ts';
 import { SpinnerCircular } from 'spinners-react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import React from 'react';
@@ -72,7 +72,7 @@ export const SignUp = () => {
 
   return(
     <div className='page-background width-full height-1000 display-flex space-around align-center'>
-    <div className='white-background height-510 white-backgroundcolor width-350'>
+    <div className='border-radius-10 white-background height-510 white-backgroundcolor width-350'>
       <div className='display-flex height-90 space-around align-center'><h2 className='font-weight-700 font-family'>SIGN UP</h2></div>
       <div className='display-flex space-around height-300'>
         <form action="post">
@@ -116,7 +116,7 @@ export const SignUp = () => {
       </div>
       <div className='display-flex align-center space-around height-100'>
         {
-          formValider(data.name) && formValider(data.email) && formValider(data.password) ? (
+          formValider(data.username) && formValider(data.name) && emailValider(data.email) && formValider(data.password) ? (
             !isLoading ? (
               <button onClick={(e) => signup(e)} className='purple-background white-color width-200 font-weight-700 font-size-medium white-color border-none button border-radius-5 height-50'>SIGN UP</button>
             ):(
