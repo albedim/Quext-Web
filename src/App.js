@@ -3,10 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
 import Home from './components/Home';
 import { Menu } from './components/Menu';
-import { Language } from './components/Language';
-import { Account } from './components/Account';
 import { About } from './components/About';
-import { TranslatorProvider, useTranslate } from "react-translate"
+import { SignIn } from './components/SignIn';
+import { SignUp } from './components/SignUp';
 
 function App() {
 
@@ -23,11 +22,11 @@ function App() {
           }
         />
         <Route 
-          path='/account' 
+          path='/about' 
           element={
             <>
               <Menu/>
-              <Account/>
+              <About/>
               <Home/>
             </>
           }
@@ -36,17 +35,15 @@ function App() {
           path='/' 
           element={
             <>
-              <Language/>
+              <SignIn/>
             </>
           }
         />
         <Route 
-          path='/about' 
+          path='/signup' 
           element={
             <>
-              <Menu/>
-              <About/>
-              <Home/>
+              <SignUp/>
             </>
           }
         />

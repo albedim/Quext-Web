@@ -202,12 +202,12 @@ body{
   background-color: #efd7f8;
 }
 
-.yellow-background{
-  background-color: #fceca9;
+.green-background{
+  background-color: #b0fca9;
 }
 
-.yellow-color{
-  color: #e6c84e;
+.green-color{
+  color: #45c756;
 }
 
 .red-color{
@@ -220,6 +220,14 @@ body{
 
 .purple-opacity{
   background-color: #f4e9fa;
+}
+
+.white-color{
+  color: white;
+}
+
+.page-background{
+  background-color: #f2f2f2;
 }
 
 a{text-decoration: none;}

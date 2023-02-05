@@ -9,10 +9,13 @@ import './styles/pattern.css';
 import { IonIcon } from "react-ion-icon";
 import Tesseract from "tesseract.js";
 import { TextareaAutosize } from "@mui/material";
+import { API } from "../utils.ts";
 
 export default function Home(){
 
     const webcamRef = useRef(null);
+
+    const [data, setData] = useState({});
 
     const [isSpeaking, setIsSpeaking] = useState(false);
 
@@ -34,9 +37,9 @@ export default function Home(){
     const sendData = async (image) => {
       setSummary(null)
       setIsLoading(true);
-      await axios.post('http://192.168.1.10:5000/api/v_1_1_5/summary/image/get', {
+      await axios.post(API + '/summary/image/get', {
           'encodedImage': image.toString().substring(23),
-          'language': window.localStorage.getItem('language').substring(0,window.localStorage.getItem('language').length - 1),
+          'language': data.language.substring(0,window.localStorage.getItem('language').length - 1),
           'API_KEY': 'PCYBL4TYfnVXeDhFZYvT'
       })
       .then(response => {
@@ -51,12 +54,21 @@ export default function Home(){
       })
     }
 
+    const getData = async () => {
+      await axios.get(API + '/user/get/' + window.localStorage.getItem('id'))
+      .then(response => {
+        setData(response.data);
+        // console.log(response.data)
+      })
+      .catch(error => console.log(error));
+    }
+
     const sendTextData = async (text) => {
       setSummary(null);
       setIsLoading(true);
-      await axios.post('https://albedim.pythonanywhere.com/api/v_1_1_5/summary/text/get', {
+      await axios.post(API + '/summary/text/get', {
           'text': text,
-          'language': window.localStorage.getItem('language').substring(0,window.localStorage.getItem('language').length - 1),
+          'language': data.language.substring(0,window.localStorage.getItem('language').length - 1),
           'API_KEY': 'PCYBL4TYfnVXeDhFZYvT'
       })
       .then(response => {
@@ -112,7 +124,7 @@ export default function Home(){
 
 
     const toText = async (image) => {
-      await Tesseract.recognize(image, window.localStorage.getItem('language'), { 
+      await Tesseract.recognize(image, data.language, { 
           logger: m => console.log() 
         }
       )
@@ -124,6 +136,10 @@ export default function Home(){
     const handleText = (e) => {
       setText(e.target.value);
     }
+
+    useEffect(() => {
+      getData();
+    },[])
 
     const changeUploadMode = () => {
       if(document.querySelector("#uploadImage").style.display == "block"){
