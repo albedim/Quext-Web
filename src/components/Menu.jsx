@@ -37,7 +37,7 @@ export const Menu = () => {
   }
 
   return(
-    <div className='height-100'>
+    <div className='position-fixed height-100'>
       <div className="display-flex space-between purple-opacity width-full height-60">
         <div className='width-90 display-flex space-around align-center'><div className='hover font-size-24 purple-color' onClick={(e) => navigate("/about")}><IonIcon name='information-circle'/></div></div>
         <div className='display-flex space-around align-center width-140'><img className='width-60' src="icon.png" alt="" /></div>
