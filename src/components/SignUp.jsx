@@ -71,8 +71,8 @@ export const SignUp = () => {
 
 
   return(
-    <div className='width-full height-1000 display-flex space-around align-center'>
-    <div className='height-510 white-backgroundcolor width-350'>
+    <div className='page-background width-full height-1000 display-flex space-around align-center'>
+    <div className='white-background height-510 white-backgroundcolor width-350'>
       <div className='display-flex height-90 space-around align-center'><h2 className='font-weight-700 font-family'>SIGN UP</h2></div>
       <div className='display-flex space-around height-300'>
         <form action="post">
